@@ -11,6 +11,7 @@ $ node_modules/.bin/sequelize model:generate --name <MODELNAME> --attributes ATT
 eg: $ node_modules/.bin/sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string
 
 * Create a migration file
+(Use this step to add modifications to an existing table. When creating a model, a migration gets created with it)
 $ node_modules/.bin/sequelize migration:create --name NAME-OF-THE-MIGRATION
 eg: $ node_modules/.bin/sequelize migration:create --name add-email-and-password-to-user
 
