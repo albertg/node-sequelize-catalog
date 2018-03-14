@@ -2,5 +2,6 @@
   "20180308084658-create-user.js",
   "20180308103506-add-phonenumber-column-to-user.js",
   "20180312093034-create-group.js",
-  "20180312095515-create-user-groups.js"
+  "20180312095515-create-user-groups.js",
+  "20180314094255-add-default-column-to-group.js"
 ]
