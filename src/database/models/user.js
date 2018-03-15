@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
       through: 'UserGroups',
       as: 'groups',
       foreignKey: 'userId'
+    }); 
+    User.hasMany(models.LoginHistory, {
+      as: 'logins',
+      foreignKey: 'userId'
     });
   };
   return User;
