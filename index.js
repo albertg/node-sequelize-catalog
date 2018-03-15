@@ -2,6 +2,7 @@ const express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var userRoutes = require('./src/routes/userRoute');
+var securityRoutes = require('./src/routes/securityRoutes');
 var db = require('./src/database/models/index');
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 //routing
+securityRoutes(app, db);
 userRoutes(app, db);
 
 app.get('/', (req, res) => {
