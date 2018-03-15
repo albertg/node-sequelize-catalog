@@ -1,5 +1,3 @@
-const User = require('../database/models/user');
-
 class UserController{
     constructor(database){
         this.db = database;
