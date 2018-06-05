@@ -3,6 +3,18 @@ class EmployeeController{
         this.db=database;
     }
 
+    getEmployee(employeeId){
+        return new Promise((resolve, reject) => {
+            this.db.Employee.find({where: {
+                id:employeeId},
+                include: ['mentor','mentees']
+            })
+            .then(employee => {
+                resolve(employee);
+            });
+        });
+    }
+
     listEmployees(){
         return new Promise((resolve, reject) => {
             this.db.Employee.findAll({
@@ -16,22 +28,22 @@ class EmployeeController{
         });
     }
 
-    assignMentor(mentorId, menteeId){
+    assignMentors(mentorId, menteeIds){
         return new Promise((resolve,reject) => {
             this.db.Employee.findById(mentorId)
                 .then(mentor => {
-                    mentor.addMentee(menteeId).then(() => {
+                    mentor.addMentees(menteeIds).then(() => {
                         resolve();
                     });
                 });
         });
     }
 
-    removeMentor(mentorId, menteeId){
+    removeMentors(mentorId, menteeIds){
         return new Promise((resolve,reject) => {
             this.db.Employee.findById(mentorId)
                 .then(mentor => {
-                    mentor.removeMentee(menteeId).then(() => {
+                    mentor.removeMentees(menteeIds).then(() => {
                         resolve();
                     });
                 });

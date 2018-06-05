@@ -7,28 +7,38 @@ const employeeRoutes = (app, db) => {
             .listEmployees().then(employees => {
                 res.json(employees);
             }).catch(err => {
-                res.err(err);
+                res.json(err);
             });
        });
     
-       app.route('/mentor/:mentorId/assign/:menteeId')
+       app.route('/mentor/:mentorId/assign/')
        .put((req,res) => {
            new EmployeeController(db)
-            .assignMentor(req.params.mentorId, req.params.menteeId)
+            .assignMentors(req.params.mentorId, req.body)
             .then(() => res.json({"result":"success"}))
             .catch(err => {
-                res.err(err);
+                res.json(err);
             });
        });
 
-       app.route('/mentor/:mentorId/remove/:menteeId')
+       app.route('/mentor/:mentorId/remove/')
        .put((req,res) => {
            new EmployeeController(db)
-            .removeMentor(req.params.mentorId, req.params.menteeId)
+            .removeMentors(req.params.mentorId, req.body)
             .then(() => res.json({"result":"success"}))
             .catch(err => {
-                res.err(err);
+                res.json(err);
             });
+       });
+
+       app.route('/employee/:employeeId')
+       .get((req, res) => {
+           new EmployeeController(db)
+           .getEmployee(req.params.employeeId)
+           .then(emp => res.json(emp))
+           .catch(err => {
+               res.json(err);
+           });
        });
 }
 
