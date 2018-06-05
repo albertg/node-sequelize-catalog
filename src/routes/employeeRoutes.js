@@ -7,7 +7,7 @@ const employeeRoutes = (app, db) => {
             .listEmployees().then(employees => {
                 res.json(employees);
             }).catch(err => {
-                res.json(err);
+                res.status(500).json({ error: err.toString() });
             });
        });
     
@@ -17,7 +17,7 @@ const employeeRoutes = (app, db) => {
             .assignMentors(req.params.mentorId, req.body)
             .then(() => res.json({"result":"success"}))
             .catch(err => {
-                res.json(err);
+                res.status(500).json({ error: err.toString() });
             });
        });
 
@@ -27,7 +27,7 @@ const employeeRoutes = (app, db) => {
             .removeMentors(req.params.mentorId, req.body)
             .then(() => res.json({"result":"success"}))
             .catch(err => {
-                res.json(err);
+                res.status(500).json({ error: err.toString() });
             });
        });
 
@@ -37,7 +37,7 @@ const employeeRoutes = (app, db) => {
            .getEmployee(req.params.employeeId)
            .then(emp => res.json(emp))
            .catch(err => {
-               res.json(err);
+                res.status(500).json({ error: err.toString() });
            });
        });
 }
