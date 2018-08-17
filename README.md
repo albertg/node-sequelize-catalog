@@ -58,5 +58,9 @@ eg: $ node_modules/.bin/sequelize seed:generate --name demo-user
 * Running the migration
 $ node_modules\.bin\sequelize db:migrate
 
+* Undo specific migration
+$node_modules\.bin\sequelize db:migrate:undo --name NAME-OF-MIGRATION_FILE_WITH_EXTENSION
+eg: $node_modules\.bin\sequelize db:migrate:undo --name migration-file.js
+
 * Running the seed
 $ node_modules\.bin\sequelize db:seed:all
