@@ -64,3 +64,7 @@ eg: $node_modules\.bin\sequelize db:migrate:undo --name migration-file.js
 
 * Running the seed
 $ node_modules\.bin\sequelize db:seed:all
+
+* Running a specific seed
+$ node_modules\.bin\sequelize db:seed --seed SEED_FILE_NAME
+eg: $node_modules\.bin\sequelize db:seed --seed 20180821073326-assign-admin-user.js 
